@@ -30,6 +30,7 @@ export const More = (p) => <I {...p} d="M5 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2
 export const Close = (p) => <I {...p} d="M6.4 5 12 10.6 17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4z" />;
 export const ChevronDown = (p) => <I {...p} d="M5.6 8.3 12 14.7l6.4-6.4 1.4 1.4-7.8 7.8-7.8-7.8z" />;
 export const Library = (p) => <I {...p} d="M4 3h2v18H4zm4 0h2v18H8zm4.7.6 1.9-.6 5.8 17.4-1.9.6z" />;
+export const SyncIcon = (p) => <I {...p} d="M12 4a8 8 0 0 1 7.4 5H17v2h6V5h-2v2.3A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8zm8 8a8 8 0 0 1-15.4 3H7v-2H1v6h2v-2.3A10 10 0 0 0 22 12z" />;
 export const ListIcon = (p) => <I {...p} d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z" />;
 export const Link = (p) => <I {...p} d="M10.6 13.4a1 1 0 0 1 0-1.4l3-3a3 3 0 1 1 4.2 4.2l-2 2-1.4-1.4 2-2a1 1 0 0 0-1.4-1.4l-3 3a1 1 0 0 1-1.4 0zm2.8-2.8a1 1 0 0 1 0 1.4l-3 3a3 3 0 1 1-4.2-4.2l2-2 1.4 1.4-2 2a1 1 0 1 0 1.4 1.4l3-3a1 1 0 0 1 1.4 0z" />;
 

@@ -5,8 +5,9 @@ import { useIsPhone, useUI } from '../ui.jsx';
 import { fetchVideoMeta, formatTime, guessArtistAndTitle, parseVideoIds, thumbnailUrl } from '../youtube.js';
 import { Cover } from './Common.jsx';
 import { PromptModal } from './Modals.jsx';
+import SyncModal from './SyncModal.jsx';
 import {
-  ChevronDown, Clock, Close, Library, Logo, SearchIcon, Heart, HeartFilled, Home, Link, ListIcon, Mic, Music, Next, Pause, Play, Plus, Prev,
+  ChevronDown, Clock, Close, Library, Logo, SyncIcon, SearchIcon, Heart, HeartFilled, Home, Link, ListIcon, Mic, Music, Next, Pause, Play, Plus, Prev,
   QueueIcon, Repeat, RepeatOne, Shuffle, VideoIcon, Volume, VolumeOff,
 } from './Icons.jsx';
 
@@ -33,7 +34,7 @@ const focusSearch = () => setTimeout(() => document.querySelector('.add-form inp
 
 export function Sidebar() {
   const { state } = useLibrary();
-  const { view, navigate } = useUI();
+  const { view, navigate, openModal } = useUI();
   const player = usePlayer();
   const newPlaylist = useNewPlaylist();
   const is = (name, extra = {}) =>
@@ -48,6 +49,7 @@ export function Sidebar() {
         <button className={`nav-item ${is('songs')}`} onClick={() => navigate({ name: 'songs' })}><ListIcon /> Songs</button>
         <button className={`nav-item ${is('artists')}`} onClick={() => navigate({ name: 'artists' })}><Mic /> Artists</button>
         <button className={`nav-item ${is('recent')}`} onClick={() => navigate({ name: 'recent' })}><Clock /> Recently played</button>
+        <button className="nav-item" onClick={() => openModal(<SyncModal />)}><SyncIcon /> Sync devices</button>
       </nav>
 
       <div className="sidebar-section">

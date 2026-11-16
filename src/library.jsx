@@ -28,6 +28,8 @@ export const uid = () => Math.random().toString(36).slice(2, 10);
 
 function reducer(state, action) {
   switch (action.type) {
+    case 'REPLACE_LIBRARY':
+      return { ...empty, ...action.state };
     case 'ADD_TRACKS': {
       const tracks = { ...state.tracks };
       for (const t of action.tracks) tracks[t.id] = { ...tracks[t.id], ...t };

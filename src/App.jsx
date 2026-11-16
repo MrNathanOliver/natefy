@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import SyncModal from './components/SyncModal.jsx';
 import { LibraryProvider } from './library.jsx';
 import { PlayerProvider, usePlayer } from './player.jsx';
 import { UIOverlays, UIProvider, useIsPhone, useUI } from './ui.jsx';
@@ -23,7 +24,7 @@ function CurrentPage() {
 
 function Shell() {
   const player = usePlayer();
-  const { queueOpen, view } = useUI();
+  const { queueOpen, view, openModal } = useUI();
   const isPhone = useIsPhone();
   const { setMode } = player;
 
@@ -31,6 +32,14 @@ function Shell() {
   useEffect(() => {
     setMode('audio');
   }, [view, setMode]);
+
+  // A sync link (…/natefy/#import=N1.…) opens the Sync window, ready to import.
+  useEffect(() => {
+    const m = location.hash.match(/import=(N1\.[A-Za-z0-9_-]+)/);
+    if (!m) return;
+    history.replaceState(null, '', location.pathname + location.search);
+    openModal(<SyncModal incoming={m[1]} />);
+  }, [openModal]);
 
   // Space = play/pause, Shift+←/→ = previous/next (ignored while typing).
   useEffect(() => {

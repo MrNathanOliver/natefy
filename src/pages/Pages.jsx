@@ -4,7 +4,8 @@ import { useUI } from '../ui.jsx';
 import TrackList from '../components/TrackList.jsx';
 import { Card, Cover, EmptyState, PageHeader, PlayActions, totalDuration } from '../components/Common.jsx';
 import { ConfirmModal, PromptModal } from '../components/Modals.jsx';
-import { Clock, HeartFilled, ListIcon, Mic, More, Plus } from '../components/Icons.jsx';
+import { Clock, HeartFilled, ListIcon, Mic, More, Plus, SyncIcon } from '../components/Icons.jsx';
+import SyncModal from '../components/SyncModal.jsx';
 import { useNewPlaylist } from '../components/Layout.jsx';
 
 const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
@@ -302,7 +303,7 @@ export function PlaylistPage({ id }) {
 /** Phone "Your library" tab: everything the desktop sidebar lists. */
 export function LibraryPage() {
   const { state } = useLibrary();
-  const { navigate } = useUI();
+  const { navigate, openModal } = useUI();
   const newPlaylist = useNewPlaylist();
   const songs = libraryTracks(state).length;
   const row = (key, art, name, sub, go) => (
@@ -329,6 +330,7 @@ export function LibraryPage() {
         {row('songs', iconArt(<ListIcon size={24} />), 'Songs', plural(songs, 'song'), () => navigate({ name: 'songs' }))}
         {row('artists', iconArt(<Mic size={24} />), 'Artists', null, () => navigate({ name: 'artists' }))}
         {row('recent', iconArt(<Clock size={24} />), 'Recently played', null, () => navigate({ name: 'recent' }))}
+        {row('sync', iconArt(<SyncIcon size={24} />), 'Sync devices', 'Copy your library to or from another device', () => openModal(<SyncModal />))}
       </div>
     </div>
   );
